@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2017
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperHot.Plugins", "SuperHot.Plugins.csproj", "{FC4184DF-0F48-F35D-2942-D2F89FC076BB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperHot", "SuperHot.csproj", "{5B037752-BA57-775E-AFB2-7A31C6F85177}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperHot.Editor.Plugins", "SuperHot.Editor.Plugins.csproj", "{9F1023F5-D5E1-762B-B0E5-BE9DC111E471}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FC4184DF-0F48-F35D-2942-D2F89FC076BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC4184DF-0F48-F35D-2942-D2F89FC076BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC4184DF-0F48-F35D-2942-D2F89FC076BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC4184DF-0F48-F35D-2942-D2F89FC076BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B037752-BA57-775E-AFB2-7A31C6F85177}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B037752-BA57-775E-AFB2-7A31C6F85177}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B037752-BA57-775E-AFB2-7A31C6F85177}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B037752-BA57-775E-AFB2-7A31C6F85177}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F1023F5-D5E1-762B-B0E5-BE9DC111E471}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F1023F5-D5E1-762B-B0E5-BE9DC111E471}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F1023F5-D5E1-762B-B0E5-BE9DC111E471}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F1023F5-D5E1-762B-B0E5-BE9DC111E471}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
