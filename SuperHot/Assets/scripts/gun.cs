@@ -12,6 +12,7 @@ public class gun : MonoBehaviour
     public float hitForce = 100f;
     public Transform gunEnd;
     public LayerMask avoid;
+    public GameObject bullet;
 
     Animation anim;
     AudioSource audio_fire;
@@ -21,7 +22,7 @@ public class gun : MonoBehaviour
     Camera fpsCam;
     private WaitForSeconds shotDuration = new WaitForSeconds(0.07f);
 
-    private LineRenderer laserLine;
+    //private LineRenderer laserLine;
 
     bool is_fire = false;
     float is_fire_time = 0f;
@@ -30,7 +31,7 @@ public class gun : MonoBehaviour
 
     void Start()
     {
-        laserLine = GetComponent<LineRenderer>();
+        //laserLine = GetComponent<LineRenderer>();
         anim = GameObject.Find("ShooterFPSWeapon").GetComponent<Animation>();
         audio_fire = GameObject.Find("Gun").GetComponent<AudioSource>();
         fpsCam = GetComponentInParent<Camera>();
@@ -41,8 +42,10 @@ public class gun : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && !is_fire)
         {
+            
             is_fire = true;
             anim.Play("recul");
+            
             audio_fire.enabled = false;
 
             StartCoroutine(ShotEffect());
@@ -50,17 +53,18 @@ public class gun : MonoBehaviour
             Vector3 rayOrigin = fpsCam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0.0f));
             RaycastHit hit;
 
-            laserLine.SetPosition(0, gunEnd.position);
+            //laserLine.SetPosition(0, gunEnd.position);
 
             if (Physics.Raycast(rayOrigin, fpsCam.transform.forward, out hit, weaponRange, avoid))
             {
+                Instantiate(bullet, gunEnd.position, Quaternion.FromToRotation(Vector3.forward, hit.point - gunEnd.position));
+                /*
                 laserLine.SetPosition(1, hit.point);
 
-                target Target = hit.transform.GetComponent<target>();
+
                 BoxCollider Target_collider = hit.transform.GetComponent<BoxCollider>();
-                if (Target != null)
+                if (hit.rigidbody != null)
                 {
-                    Target.TakeDamage(gunDamage);
                     GameObject impact = Instantiate(ImpactEffect, hit.point, Quaternion.LookRotation(hit.normal));
                     Destroy(impact, 0.5f);
 
@@ -75,12 +79,13 @@ public class gun : MonoBehaviour
                 {
                     hit.rigidbody.AddForce(-hit.normal * hitForce);
                 }
+                */
             }
             else
             {
-                laserLine.SetPosition(1, rayOrigin + (fpsCam.transform.forward * weaponRange));
+                Instantiate(bullet, gunEnd.position, gunEnd.rotation);
+                //laserLine.SetPosition(1, rayOrigin + (fpsCam.transform.forward * weaponRange));
             }
-
 
         }
 
@@ -93,16 +98,25 @@ public class gun : MonoBehaviour
                 is_fire_time = 0;
             }
         }
-    }
 
+    
+    }
+   private float AngleBetweenVector2(Vector2 vec1, Vector2 vec2)
+    {
+        Vector2 diference = vec2 - vec1;
+        float sign = (vec2.y < vec1.y) ? -1.0f : 1.0f;
+        return Vector2.Angle(Vector2.right, diference) * sign;
+    }
 
 
     private IEnumerator ShotEffect()
     {
         audio_fire.enabled = true;
-        laserLine.enabled = true;
+        //laserLine.enabled = true;
         yield return shotDuration;
-        laserLine.enabled = false;
+        //laserLine.enabled = false;
     }
+
+    
 
 }
