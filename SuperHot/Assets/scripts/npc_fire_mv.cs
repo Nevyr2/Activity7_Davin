@@ -31,14 +31,18 @@ public class npc_fire_mv : MonoBehaviour
     {
         if (other == Player)
         {
+            GetComponent<npc_fire>().can_fire = true; 
             inside = true;
-            anim_NPC.Play("enemi_fire", -1);
         }
 
     }
     private void OnTriggerExit(Collider other)
     {
         if (other == Player)
+        {
+            GetComponent<npc_fire>().can_fire = false;
             inside = false;
+        }
+
     }
 }

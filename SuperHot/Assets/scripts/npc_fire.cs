@@ -13,9 +13,9 @@ public class npc_fire : MonoBehaviour
     public Transform gunEnd;
     public LayerMask avoid;
     public GameObject bullet;
+    public bool can_fire = false;
 
     Animation anim;
-    AudioSource audio_fire;
 
     Camera fpsCam;
     private WaitForSeconds shotDuration = new WaitForSeconds(0.07f);
@@ -28,21 +28,18 @@ public class npc_fire : MonoBehaviour
     void Start()
     {
         anim = GameObject.Find("ShooterFPSWeapon").GetComponent<Animation>();
-        audio_fire = GameObject.Find("Gun").GetComponent<AudioSource>();
         fpsCam = GetComponentInParent<Camera>();
 
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && !is_fire)
+        if (!is_fire && can_fire)
         {
 
             is_fire = true;
-            anim.Play("recul");
+            //anim.Play("recul");
 
-            audio_fire.enabled = false;
-            audio_fire.enabled = true;
 
             Vector3 rayOrigin = fpsCam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0.0f));
             RaycastHit hit;
