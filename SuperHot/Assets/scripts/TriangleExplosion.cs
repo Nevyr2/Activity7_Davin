@@ -57,7 +57,7 @@ public class TriangleExplosion : MonoBehaviour {
 				//GO.AddComponent<BoxCollider>();
 				GO.AddComponent<Rigidbody> ();
 				GO.GetComponent<Rigidbody> ().mass = 0.1f;
-				//GO.GetComponent<Rigidbody> ().useGravity = true;
+				GO.GetComponent<Rigidbody> ().useGravity = true;
 				//GO.GetComponent<Rigidbody> ().interpolation = RigidbodyInterpolation.Extrapolate;
 				Vector3 explosionPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
                 Vector3 force = new Vector3 (Random.Range (-500f * Time.timeScale, 500f * Time.timeScale), Random.Range (-500f * Time.timeScale, 500f * Time.timeScale), Random.Range (-500f * Time.timeScale, 500f * Time.timeScale));
@@ -68,8 +68,8 @@ public class TriangleExplosion : MonoBehaviour {
 			
 		GetComponent<SkinnedMeshRenderer>().enabled = false;
 
-		yield return new WaitForSeconds(0.1f);
-        Destroy(gameObject);
+		yield return new WaitForSeconds(0.2f);
+        Destroy(transform.parent.gameObject);
 
     }
 

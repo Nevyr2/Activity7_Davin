@@ -292,6 +292,8 @@
     <Compile Include="Assets\scripts\bullet.cs" />
     <Compile Include="Assets\scripts\gun.cs" />
     <Compile Include="Assets\scripts\LevelManager.cs" />
+    <Compile Include="Assets\scripts\npc_fire.cs" />
+    <Compile Include="Assets\scripts\npc_fire_mv.cs" />
     <Compile Include="Assets\scripts\NPCMovement.cs" />
     <Compile Include="Assets\scripts\patrolling.cs" />
     <Compile Include="Assets\scripts\time_slow.cs" />

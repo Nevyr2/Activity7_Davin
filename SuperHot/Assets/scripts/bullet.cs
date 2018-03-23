@@ -6,6 +6,7 @@ public class bullet : MonoBehaviour {
 
     public float speed = 10f;
     public GameObject player;
+    public GameObject ImpactEffect;
     // Use this for initialization
     void Start ()
     {
@@ -28,6 +29,8 @@ public class bullet : MonoBehaviour {
         {
             
             tr.dead = true;
+            GameObject impact = Instantiate(ImpactEffect, transform.position, Quaternion.LookRotation(transform.position));
+            Destroy(impact, 0.3f);
         }
 
         Destroy(gameObject);

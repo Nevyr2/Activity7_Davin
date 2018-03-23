@@ -17,12 +17,8 @@ public class gun : MonoBehaviour
     Animation anim;
     AudioSource audio_fire;
 
-    public GameObject ImpactEffect;
-
     Camera fpsCam;
     private WaitForSeconds shotDuration = new WaitForSeconds(0.07f);
-
-    //private LineRenderer laserLine;
 
     bool is_fire = false;
     float is_fire_time = 0f;
@@ -31,7 +27,6 @@ public class gun : MonoBehaviour
 
     void Start()
     {
-        //laserLine = GetComponent<LineRenderer>();
         anim = GameObject.Find("ShooterFPSWeapon").GetComponent<Animation>();
         audio_fire = GameObject.Find("Gun").GetComponent<AudioSource>();
         fpsCam = GetComponentInParent<Camera>();
@@ -47,44 +42,22 @@ public class gun : MonoBehaviour
             anim.Play("recul");
             
             audio_fire.enabled = false;
-
-            StartCoroutine(ShotEffect());
+            audio_fire.enabled = true;
 
             Vector3 rayOrigin = fpsCam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0.0f));
             RaycastHit hit;
 
-            //laserLine.SetPosition(0, gunEnd.position);
 
             if (Physics.Raycast(rayOrigin, fpsCam.transform.forward, out hit, weaponRange, avoid))
             {
-                Instantiate(bullet, gunEnd.position, Quaternion.FromToRotation(Vector3.forward, hit.point - gunEnd.position));
-                /*
-                laserLine.SetPosition(1, hit.point);
-
+                Instantiate(bullet, gunEnd.position, Quaternion.FromToRotation(Vector3.forward, hit.point - gunEnd.transform.position));
 
                 BoxCollider Target_collider = hit.transform.GetComponent<BoxCollider>();
-                if (hit.rigidbody != null)
-                {
-                    GameObject impact = Instantiate(ImpactEffect, hit.point, Quaternion.LookRotation(hit.normal));
-                    Destroy(impact, 0.5f);
-
-                }
-                else
-                {
-                    Debug.Log("no tatget");
-                    laserLine.SetPosition(1, rayOrigin + (fpsCam.transform.forward * weaponRange));
-                }
-
-                if (hit.rigidbody != null)
-                {
-                    hit.rigidbody.AddForce(-hit.normal * hitForce);
-                }
-                */
+                
             }
             else
             {
                 Instantiate(bullet, gunEnd.position, gunEnd.rotation);
-                //laserLine.SetPosition(1, rayOrigin + (fpsCam.transform.forward * weaponRange));
             }
 
         }
@@ -100,21 +73,6 @@ public class gun : MonoBehaviour
         }
 
     
-    }
-   private float AngleBetweenVector2(Vector2 vec1, Vector2 vec2)
-    {
-        Vector2 diference = vec2 - vec1;
-        float sign = (vec2.y < vec1.y) ? -1.0f : 1.0f;
-        return Vector2.Angle(Vector2.right, diference) * sign;
-    }
-
-
-    private IEnumerator ShotEffect()
-    {
-        audio_fire.enabled = true;
-        //laserLine.enabled = true;
-        yield return shotDuration;
-        //laserLine.enabled = false;
     }
 
     
