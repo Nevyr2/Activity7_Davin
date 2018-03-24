@@ -8,6 +8,7 @@ public class time_slow : MonoBehaviour
     public float slowMo = 0.1f;
     public float normTime = 1;
     private bool doSlowMo = false;
+    public GameObject bullet;
 
     [SerializeField] private FirstPersonController player;
 
@@ -33,6 +34,7 @@ public class time_slow : MonoBehaviour
         }
     }
 
-    
+
+
 
 }

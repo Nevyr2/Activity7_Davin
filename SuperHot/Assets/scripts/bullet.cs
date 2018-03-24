@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class bullet : MonoBehaviour {
 
-    public float speed = 10f;
+    public float speed;
     public GameObject player;
     public GameObject ImpactEffect;
+    public GameObject map;
     // Use this for initialization
     void Start ()
     {
@@ -20,9 +21,6 @@ public class bullet : MonoBehaviour {
 	}
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject == player)
-            return;
-
         TriangleExplosion tr = collision.gameObject.GetComponentInChildren<TriangleExplosion>();
 
         if (collision.gameObject.tag == "ennemi" && tr != null)
@@ -33,6 +31,17 @@ public class bullet : MonoBehaviour {
             Destroy(impact, 0.3f);
         }
 
+
         Destroy(gameObject);
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            Debug.Log("loose");
+            GameObject impact = Instantiate(ImpactEffect, transform.position, Quaternion.LookRotation(transform.position));
+            Destroy(impact, 0.3f);
+            Destroy(gameObject);
+        }
     }
 }

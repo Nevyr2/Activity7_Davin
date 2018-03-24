@@ -59,7 +59,7 @@ public class TriangleExplosion : MonoBehaviour {
 				GO.GetComponent<Rigidbody> ().mass = 0.1f;
 				GO.GetComponent<Rigidbody> ().useGravity = true;
 				//GO.GetComponent<Rigidbody> ().interpolation = RigidbodyInterpolation.Extrapolate;
-				Vector3 explosionPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+				//Vector3 explosionPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
                 Vector3 force = new Vector3 (Random.Range (-500f * Time.timeScale, 500f * Time.timeScale), Random.Range (-500f * Time.timeScale, 500f * Time.timeScale), Random.Range (-500f * Time.timeScale, 500f * Time.timeScale));
 				GO.GetComponent<Rigidbody>().AddForce(force);
 				Destroy(GO, 1f*Time.timeScale + Random.Range(0.0f, 3*Time.timeScale));

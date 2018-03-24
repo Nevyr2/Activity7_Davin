@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class patrolling : MonoBehaviour {
 
     public Transform[] waypoint;
+    public GameObject player;
     public GameObject NPC;
     NavMeshAgent agent;
     const int epsilon = 2;
@@ -13,14 +14,18 @@ public class patrolling : MonoBehaviour {
     float time_idle;
     bool arrived = false;
     // Use this for initialization
-    void Start () {
+    void Start ()
+    {
         agent = GetComponent<NavMeshAgent>();
-        agent.SetDestination(waypoint[4].position);
+        //agent.SetDestination(waypoint[4].position);
+        agent.SetDestination(player.transform.position);
         idle = Random.Range(0, 5f);
     }
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
+        /*
         if ((transform.position - waypoint[Random.Range(0, waypoint.Length)].position).magnitude < epsilon)
         {
             arrived = true;
@@ -33,13 +38,16 @@ public class patrolling : MonoBehaviour {
             {
                 agent.SetDestination(waypoint[Random.Range(0, waypoint.Length)].position);
                 idle = 0;
-                time_idle = Random.Range(0, 5f);
+                time_idle = Random.Range(0, 0f);
                 NPC.GetComponent<NPCMovement>().idle = false;
                 arrived = false;
             }
         }
 
-        
+      */
+        agent.SetDestination(player.transform.position);
+
+
     }
 
 }

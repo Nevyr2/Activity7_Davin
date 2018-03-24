@@ -5,8 +5,6 @@ using UnityEngine;
 public class gun : MonoBehaviour
 {
 
-
-    int gunDamage = 5;
     public float fireRate = 0.25f;
     public float weaponRange = 50f;
     public float hitForce = 100f;
@@ -18,7 +16,6 @@ public class gun : MonoBehaviour
     AudioSource audio_fire;
 
     Camera fpsCam;
-    private WaitForSeconds shotDuration = new WaitForSeconds(0.07f);
 
     bool is_fire = false;
     float is_fire_time = 0f;
@@ -51,9 +48,7 @@ public class gun : MonoBehaviour
             if (Physics.Raycast(rayOrigin, fpsCam.transform.forward, out hit, weaponRange, avoid))
             {
                 Instantiate(bullet, gunEnd.position, Quaternion.FromToRotation(Vector3.forward, hit.point - gunEnd.transform.position));
-
-                BoxCollider Target_collider = hit.transform.GetComponent<BoxCollider>();
-                
+              
             }
             else
             {

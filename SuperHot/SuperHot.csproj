@@ -297,6 +297,7 @@
     <Compile Include="Assets\scripts\NPCMovement.cs" />
     <Compile Include="Assets\scripts\patrolling.cs" />
     <Compile Include="Assets\scripts\time_slow.cs" />
+    <Compile Include="Assets\scripts\touched.cs" />
     <Compile Include="Assets\scripts\TriangleExplosion.cs" />
   </ItemGroup>
   <ItemGroup>
