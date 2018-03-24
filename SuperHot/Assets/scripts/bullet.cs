@@ -8,30 +8,24 @@ public class bullet : MonoBehaviour {
     public GameObject player;
     public GameObject ImpactEffect;
     public GameObject map;
-    // Use this for initialization
-    void Start ()
-    {
 
-	}
-	
-	// Update is called once per frame
+
 	void Update ()
     {
         transform.position += transform.forward * Time.deltaTime * speed;
 	}
     private void OnCollisionEnter(Collision collision)
     {
+
         TriangleExplosion tr = collision.gameObject.GetComponentInChildren<TriangleExplosion>();
 
         if (collision.gameObject.tag == "ennemi" && tr != null)
         {
-            
+            Debug.Log("loose");
             tr.dead = true;
             GameObject impact = Instantiate(ImpactEffect, transform.position, Quaternion.LookRotation(transform.position));
             Destroy(impact, 0.3f);
         }
-
-
         Destroy(gameObject);
     }
     private void OnTriggerEnter(Collider other)
