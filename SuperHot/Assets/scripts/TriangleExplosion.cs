@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class TriangleExplosion : MonoBehaviour {
 
     public bool dead;
+    public GameObject player;
 	public IEnumerator SplitMesh (bool destroy)
     {
 
@@ -83,14 +84,7 @@ public class TriangleExplosion : MonoBehaviour {
 			Time.fixedDeltaTime = Time.fixedDeltaTime * Time.timeScale;
 			StartCoroutine(SplitMesh(true));
             dead = false;
-            GetComponentInParent<BoxCollider>().enabled = false;
 		}
-        else
-        {
-		//	Time.timeScale = 0.01f;
-		//	Time.fixedDeltaTime = 0.0002f;
-		}
-
-	}
+    }
 }
 

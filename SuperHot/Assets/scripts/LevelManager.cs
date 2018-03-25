@@ -17,7 +17,7 @@ public class LevelManager : MonoBehaviour {
         }
 
         Instantiate(npc, rooms[7].transform.position + new Vector3(Random.insideUnitCircle.x * 3.5f, 0.1f, Random.insideUnitCircle.y * 3.5f), Quaternion.identity);
-        Instantiate(npc, rooms[Random.Range(0, rooms.Length - 1)].transform.position + new Vector3(Random.insideUnitCircle.x * 3.5f, 0.1f, Random.insideUnitCircle.y * 3.5f), Quaternion.identity);
+        Instantiate(npc, rooms[Random.Range(0, rooms.Length - 1)].transform.position + new Vector3(Random.insideUnitCircle.x * 2f, 0.1f, Random.insideUnitCircle.y * 2f), Quaternion.identity);
     }
 	// Update is called once per frame
 	void Update () {

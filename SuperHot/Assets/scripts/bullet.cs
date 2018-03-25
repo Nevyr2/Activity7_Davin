@@ -21,7 +21,6 @@ public class bullet : MonoBehaviour {
 
         if (collision.gameObject.tag == "ennemi" && tr != null)
         {
-            Debug.Log("loose");
             tr.dead = true;
             GameObject impact = Instantiate(ImpactEffect, transform.position, Quaternion.LookRotation(transform.position));
             Destroy(impact, 0.3f);
@@ -32,10 +31,11 @@ public class bullet : MonoBehaviour {
     {
         if (other.gameObject.tag == "Player")
         {
-            Debug.Log("loose");
             GameObject impact = Instantiate(ImpactEffect, transform.position, Quaternion.LookRotation(transform.position));
             Destroy(impact, 0.3f);
             Destroy(gameObject);
+            player.GetComponent<touched>().loose = true;
+            player.GetComponent<time_slow>().dead = true;
         }
     }
 }

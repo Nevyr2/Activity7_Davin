@@ -19,7 +19,7 @@ public class gun : MonoBehaviour
 
     bool is_fire = false;
     float is_fire_time = 0f;
-
+    int nb_bullet = 7;
 
 
     void Start()
@@ -32,9 +32,9 @@ public class gun : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && !is_fire)
+        if (Input.GetKeyDown(KeyCode.Space) && !is_fire && nb_bullet > 0)
         {
-            
+            nb_bullet -= 1;
             is_fire = true;
             anim.Play("recul");
             

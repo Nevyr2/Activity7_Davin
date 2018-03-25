@@ -13,8 +13,9 @@ public class npc_fire : MonoBehaviour
 
     Camera fpsCam;
 
-    bool is_fire = false;
+    bool is_fire = true;
     float is_fire_time = 0f;
+
 
 
 
@@ -28,7 +29,6 @@ public class npc_fire : MonoBehaviour
     {
         if (!is_fire)
         {
-
             is_fire = true;
 
 
@@ -51,7 +51,7 @@ public class npc_fire : MonoBehaviour
         if (is_fire)
         {
             is_fire_time += Time.deltaTime;
-            if (is_fire_time > 2)
+            if (is_fire_time > 1f)
             {
                 is_fire = false;
                 is_fire_time = 0;

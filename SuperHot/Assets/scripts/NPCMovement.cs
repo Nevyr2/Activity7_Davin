@@ -38,7 +38,7 @@ public class NPCMovement : MonoBehaviour {
         if (other == Player)
              inside = true;
     }
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerExit(Collider other)  
     {
         if (other == Player)
             inside = false;
